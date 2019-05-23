@@ -3,7 +3,7 @@ use std::ops::{Add, Sub, Mul, Div};
 use std::str::FromStr;
 
 
-#[derive(Debug, Eq, PartialEq, Ord, PartialOrd)]
+#[derive(Eq, PartialEq, Ord, PartialOrd)]
 pub struct Money {
     amount: i64,
 }
@@ -148,6 +148,12 @@ impl fmt::Display for Money {
         let mut s = format!("{:03}", self.amount);
         s.insert(s.len() - 2, '.');
         write!(f, "{}", s.to_string())
+    }
+}
+
+impl fmt::Debug for Money {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        fmt::Display::fmt(self, f)
     }
 }
 
