@@ -1,5 +1,5 @@
 use std::fmt;
-use std::ops::{Add, Sub, Mul};
+use std::ops::{Add, Sub, Mul, Div};
 use std::str::FromStr;
 
 
@@ -131,6 +131,18 @@ impl Mul for &Money {
     }
 }
 
+impl Div for &Money {
+    type Output = Result<f64, String>;
+
+    fn div(self, rhs: &Money) -> Self::Output {
+        if rhs.amount == 0 {
+            Err("Thero dividion".to_string())
+        } else {
+            Ok(self.amount as f64 / rhs.amount as f64)
+        }
+    }
+}
+
 impl fmt::Display for Money {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let mut s = format!("{:03}", self.amount);
@@ -160,7 +172,7 @@ mod test {
         let money: Money = "123".parse().unwrap();
         assert_eq!("123.00", money.to_string());
 
-        let money:Money = "123.0".parse().unwrap();
+        let money: Money = "123.0".parse().unwrap();
         assert_eq!("123.00", money.to_string());
 
         let money = Money::from_str("-123.0").unwrap();
@@ -186,5 +198,13 @@ mod test {
 
         assert_eq!("67.32", (money1 + money2).unwrap().to_string());
         assert_eq!("87.32", (money1 + money3).unwrap().to_string());
+    }
+
+    #[test]
+    fn test_div_operation() {
+        let money1 = &"20".parse::<Money>().unwrap();
+        let money2 = &"10".parse::<Money>().unwrap();
+
+        assert_eq!(2 as f64, (money1 / money2).unwrap())
     }
 }
