@@ -43,7 +43,7 @@ impl FromStr for Money {
 
         for char in ns.chars() {
             if is_counter_activated {
-                if counter <= 2 {
+                if counter < 2 {
                     counter += 1
                 } else {
                     return Err("Failing parsing string".to_string());
