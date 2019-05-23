@@ -1,0 +1,5 @@
+[package]
+name = "money"
+version = "0.1.0"
+authors = ["Heckad <heckad@yandex.ru>"]
+edition = "2018"
