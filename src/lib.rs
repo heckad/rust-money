@@ -58,20 +58,12 @@ impl FromStr for Money {
                 }
             }
 
-            amount = match amount.checked_mul(10) {
-                Some(v) => v,
-                None => return Err("Failing parsing string".to_string())
-            };
 
-            let num = match char.to_digit(10) {
-                Some(v) => v as i64,
-                None => return Err("Failing parsing string".to_string())
-            };
+            let num = char.to_digit(10)
+                .ok_or("Failing parsing string".to_string())? as i64;
 
-            amount = match amount.checked_add(num) {
-                Some(v) => v,
-                None => return Err("Failing parsing string".to_string())
-            };
+            amount = amount.checked_mul(10).ok_or("Failing parsing string".to_string())?;
+            amount = amount.checked_add(num).ok_or("Failing parsing string".to_string())?;
         }
 
         while counter < 2 {
@@ -196,7 +188,7 @@ mod test {
     }
 
     #[test]
-    fn test_failing_creating_form_string(){
+    fn test_failing_creating_form_string() {
         let money = "123.050".parse::<Money>();
         assert_eq!(Err("Failing parsing string".to_string()), money);
     }
