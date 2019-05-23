@@ -136,7 +136,7 @@ impl Div for &Money {
 
     fn div(self, rhs: &Money) -> Self::Output {
         if rhs.amount == 0 {
-            Err("Thero dividion".to_string())
+            Err("Division by zero".to_string())
         } else {
             Ok(self.amount as f64 / rhs.amount as f64)
         }
