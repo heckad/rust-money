@@ -2,7 +2,7 @@
 name = "money_type"
 version = "0.0.1"
 authors = ["Heckad <heckad@yandex.ru>"]
-description = "A money type"
+description = "Simple money type"
 edition = "2018"
 license-file = "LICENSE"
 repository = "https://github.com/heckad/rust-money"
