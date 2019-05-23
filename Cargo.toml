@@ -1,6 +1,6 @@
 [package]
 name = "money_type"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["Heckad <heckad@yandex.ru>"]
 description = "Simple money type"
 edition = "2018"
