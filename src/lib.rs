@@ -191,7 +191,6 @@ mod test {
 
     #[test]
     fn test_add_operation() {
-        "das".parse::<Money>();
         let money1 = &Money::from_str("55.32").unwrap();
         let money2 = &Money::from_str("12.").unwrap();
         let money3 = &Money::from_str("32.").unwrap();
