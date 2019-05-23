@@ -2,4 +2,8 @@
 name = "money"
 version = "0.0.1"
 authors = ["Heckad <heckad@yandex.ru>"]
+description = "A money type"
 edition = "2018"
+license-file = "LICENSE"
+repository = "https://github.com/heckad/rust-money"
+homepage = "https://github.com/heckad/rust-money"
