@@ -196,6 +196,12 @@ mod test {
     }
 
     #[test]
+    fn test_failing_creating_form_string(){
+        let money = "123.050".parse::<Money>();
+        assert_eq!(Err("Failing parsing string".to_string()), money);
+    }
+
+    #[test]
     fn test_add_operation() {
         let money1 = &Money::from_str("55.32").unwrap();
         let money2 = &Money::from_str("12.").unwrap();
